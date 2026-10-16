@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Opened Medication Expiry</title>
+<style>
+:root{--bg:#f6f8f7;--card:#fff;--tx:#1b2a24;--mut:#62736b;--ac:#1f7a5a;--bd:#d9e2de;--wa:#b4540a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a17;--card:#1b2622;--tx:#e8f0ec;--mut:#9bb0a6;--ac:#4cc79a;--bd:#2b3b35;--wa:#f0a060}}
+:root[data-theme="dark"]{--bg:#121a17;--card:#1b2622;--tx:#e8f0ec;--mut:#9bb0a6;--ac:#4cc79a;--bd:#2b3b35;--wa:#f0a060}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:20px;margin:4px 0}p.s{color:var(--mut);margin:0 0 12px;font-size:13px}
+input,select{width:100%;padding:12px;font-size:16px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);margin-bottom:8px}
+label{font-size:13px;color:var(--mut)}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:8px 0;cursor:pointer}
+.n{font-weight:600}
+.p{font-size:20px;color:var(--ac);font-weight:700;margin:2px 0}
+.m{font-size:13px;color:var(--mut)}.t{display:inline-block;font-size:12px;border:1px solid var(--bd);border-radius:20px;padding:1px 8px;margin-inline-end:4px}
+.r{margin-top:8px;padding:10px;border-radius:8px;background:var(--bg);border:1px dashed var(--ac)}
+.w{font-size:12px;color:var(--wa);margin-top:16px}
+</style>
+</head>
+<body>
+<main>
+<h1>Opened Medication Expiry</h1>
+<p class="s">Type the medication name, then tap it to calculate the discard date from the opening date.</p>
+<input id="q" type="search" placeholder="Search: insulin, Ventolin, amoxicillin..." autocomplete="off">
+<select id="cat"><option value="">All categories</option></select>
+<p id="nojs" class="w">Search and the date calculator need a browser app (Chrome, Safari or Documents by Readdle). The full list is shown below.</p>
+<div id="out"><div class="c"><div class="n">Topical ointments, creams, shampoos, solutions, sprays – multiple patients</div><div class="p">7 days</div><div class="m"><span class="t">Topical</span>Room temperature</div></div>
+<div class="c"><div class="n">Topical ointments, creams, shampoos, solutions, sprays – specific patient</div><div class="p">28 days</div><div class="m"><span class="t">Topical</span>Room temperature</div></div>
+<div class="c"><div class="n">Pancreatin (Creon) 150mg/cap</div><div class="p">3 months after opening – keep tightly closed</div><div class="m"><span class="t">Oral</span>Room temperature</div></div>
+<div class="c"><div class="n">Ophthalmic / otic / nasal drops – multiple patients (outpatient)</div><div class="p">7 days</div><div class="m"><span class="t">Drops</span>Room temperature</div></div>
+<div class="c"><div class="n">Ophthalmic / otic / nasal drops – specific patient</div><div class="p">28 days</div><div class="m"><span class="t">Drops</span>Room temperature</div></div>
+<div class="c"><div class="n">TABUNEX (Mometasone furoate) 50mcg nasal spray</div><div class="p">Within 2 months of first use</div><div class="m"><span class="t">Drops</span>Room temperature</div></div>
+<div class="c"><div class="n">Symbicort (Budesonide/Formoterol) – not for multiple patients</div><div class="p">3 months after first opening</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">Spiriva (Tiotropium capsule) – not for multiple patients</div><div class="p">9 days after opening blister strip</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">Other oral inhalers</div><div class="p">6 months after opening</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">ANORO ELLIPTA (Umeclidinium/Vilanterol)</div><div class="p">Within 6 weeks of first opening</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">RELVAR ELLIPTA (Fluticasone furoate/Vilanterol)</div><div class="p">Max 1 month after removal of tray</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">BUFOMIX Easyhaler (Budesonide/Formoterol) 160/4.5</div><div class="p">4 months after opening – original container</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">FOSTER NEXTHALER (Beclometasone/Formoterol) 100/6</div><div class="p">2 months after opening – original container</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">TRELEGY ELLIPTA (Fluticasone/Umeclidinium/Vilanterol)</div><div class="p">1 month after opening – original container</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">FLUTIFORM Evohaler (Fluticasone/Formoterol) 125/5 or 250/10</div><div class="p">3 months after opening</div><div class="m"><span class="t">Inhaler</span>Room temperature</div></div>
+<div class="c"><div class="n">Oral liquids that don't need reconstitution (incl. drops)</div><div class="p">28 days</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Levetiracetam syrup 100mg/ml (Vales)</div><div class="p">Within 7 months after opening</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Levetiracetam syrup 100mg/ml (Neuritam)</div><div class="p">Within 5 months after opening (confirmed by pharmacy)</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Levetiracetam syrup 100mg/ml (Vitram)</div><div class="p">Within 5 months after opening (confirmed by pharmacy)</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Ursofalk (Ursodeoxycholic acid) 250mg/5ml suspension</div><div class="p">Within 4 months after opening</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">LEVOZAL (Levocetirizine) 2.5mg/5ml syrup</div><div class="p">Within 3 months of opening</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">DOMPY (Domperidone) 1mg/ml suspension</div><div class="p">Within 3 months of opening</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Onealpha (Alfacalcidol) 2mcg/ml drops</div><div class="p">28 days – protect from light</div><div class="m"><span class="t">Oral liquid</span>Fridge</div></div>
+<div class="c"><div class="n">BABYLYTE (ORS)</div><div class="p">Within 48 hours after opening</div><div class="m"><span class="t">Oral liquid</span>Fridge</div></div>
+<div class="c"><div class="n">FEROGLOBIN liquid</div><div class="p">Within 3 months once opened</div><div class="m"><span class="t">Oral liquid</span>Fridge</div></div>
+<div class="c"><div class="n">TRILEPTAL (Oxcarbazepine) suspension</div><div class="p">Within 7 weeks after opening</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Revotril (Clonazepam) drops 2.5mg/ml (10ml)</div><div class="p">120 days</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Chloral hydrate syrup 500mg/5ml</div><div class="p">6 months</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Phenobarbital elixir</div><div class="p">28 days</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Clobazam (Tapclop) suspension</div><div class="p">28 days – room temp</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Vitamin D3 (Cholecalciferol) D-Seul drops</div><div class="p">6 months</div><div class="m"><span class="t">Oral liquid</span>Room temperature</div></div>
+<div class="c"><div class="n">Azithromycin suspension</div><div class="p">5 days</div><div class="m"><span class="t">Antibiotic</span>Fridge</div></div>
+<div class="c"><div class="n">Amoxicillin suspension</div><div class="p">14 days</div><div class="m"><span class="t">Antibiotic</span>Fridge</div></div>
+<div class="c"><div class="n">Amoxicillin/Clavulanic acid suspension</div><div class="p">7 days</div><div class="m"><span class="t">Antibiotic</span>Fridge</div></div>
+<div class="c"><div class="n">Cephalexin suspension</div><div class="p">14 days</div><div class="m"><span class="t">Antibiotic</span>Fridge</div></div>
+<div class="c"><div class="n">Cefaclor suspension</div><div class="p">14 days</div><div class="m"><span class="t">Antibiotic</span>Fridge</div></div>
+<div class="c"><div class="n">Cefadroxil suspension</div><div class="p">14 days in fridge / 7 days at room temp</div><div class="m"><span class="t">Antibiotic</span>Fridge</div></div>
+<div class="c"><div class="n">Cefuroxime suspension</div><div class="p">10 days</div><div class="m"><span class="t">Antibiotic</span>Fridge</div></div>
+<div class="c"><div class="n">Cefixime suspension</div><div class="p">14 days (room temp or fridge)</div><div class="m"><span class="t">Antibiotic</span>Room temp or fridge</div></div>
+<div class="c"><div class="n">Lantus Solostar / Semglee / Vivaro (Insulin glargine 100)</div><div class="p">4 weeks – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Toujeo Solostar (Insulin glargine 300)</div><div class="p">6 weeks – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Basaglar (Insulin glargine 100)</div><div class="p">28 days – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Levemir (Insulin detemir)</div><div class="p">6 weeks</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Tresiba FlexTouch / FlexPen / Vial (Insulin degludec)</div><div class="p">8 weeks – protect from light</div><div class="m"><span class="t">Insulin</span>Room temp or fridge</div></div>
+<div class="c"><div class="n">Humalog Kwik-Pen / Mix25 / Mix50 (Insulin lispro)</div><div class="p">28 days – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Lyumjev Kwik-Pen (Insulin lispro)</div><div class="p">28 days</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Humalog Mix 50/50 Kwik-Pen</div><div class="p">10 days – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Xultophy (Insulin degludec/Liraglutide)</div><div class="p">21 days – protect from light</div><div class="m"><span class="t">Insulin</span>Room temp or fridge</div></div>
+<div class="c"><div class="n">Humulin R (Regular human insulin)</div><div class="p">28 days</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Actrapid-HM (Regular human insulin)</div><div class="p">6 weeks – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Humulin N (NPH)</div><div class="p">28 days</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Humulin 70/30</div><div class="p">28 days</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Mixtard 70/30</div><div class="p">5 weeks</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Novomix 30/70 and 50/50 Flex pen (Insulin aspart mix)</div><div class="p">4 weeks – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Novorapid Flex pen (Insulin aspart)</div><div class="p">4 weeks – protect from light</div><div class="m"><span class="t">Insulin</span>Room temp or fridge</div></div>
+<div class="c"><div class="n">Truvelog Flex pen (Insulin aspart)</div><div class="p">28 days – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Soliqua 100/33 and 100/50 (Glargine/Lixisenatide)</div><div class="p">28 days – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Apidra Solostar (Insulin glulisine)</div><div class="p">28 days – protect from light</div><div class="m"><span class="t">Insulin</span>Room temperature</div></div>
+<div class="c"><div class="n">Ryzodeg 70/30</div><div class="p">4 weeks – protect from light</div><div class="m"><span class="t">Insulin</span>Room temp or fridge</div></div>
+<div class="c"><div class="n">Single-dose vaccines (no preservatives)</div><div class="p">Discard remaining portion</div><div class="m"><span class="t">Vaccine</span></div></div>
+<div class="c"><div class="n">BCG vaccine</div><div class="p">4 hours</div><div class="m"><span class="t">Vaccine</span>Fridge</div></div>
+<div class="c"><div class="n">OPV (oral polio vaccine)</div><div class="p">28 days if WHO multi-dose vial policy conditions are met</div><div class="m"><span class="t">Vaccine</span>Fridge</div></div>
+<div class="c"><div class="n">Diphtheria-Tetanus (adult)</div><div class="p">28 days if WHO multi-dose vial policy conditions are met</div><div class="m"><span class="t">Vaccine</span>Fridge</div></div>
+<div class="c"><div class="n">Hepatitis B vaccine</div><div class="p">28 days if WHO multi-dose vial policy conditions are met</div><div class="m"><span class="t">Vaccine</span>Fridge</div></div>
+<div class="c"><div class="n">Multi-dose vaccines containing preservatives</div><div class="p">As specified by manufacturer / WHO</div><div class="m"><span class="t">Vaccine</span>Fridge</div></div>
+<div class="c"><div class="n">Measles vaccine (10-dose vial)</div><div class="p">6 hours after opening</div><div class="m"><span class="t">Vaccine</span>Fridge</div></div>
+<div class="c"><div class="n">PPD test</div><div class="p">30 days after opening</div><div class="m"><span class="t">Vaccine</span>Fridge</div></div>
+<div class="c"><div class="n">Botox after reconstitution</div><div class="p">Within 24 hours</div><div class="m"><span class="t">Misc</span>Fridge</div></div>
+<div class="c"><div class="n">Extemporaneous preparations</div><div class="p">Follow pharmacy label</div><div class="m"><span class="t">Misc</span></div></div>
+<div class="c"><div class="n">Human Albumin 20%</div><div class="p">Discard unused portion</div><div class="m"><span class="t">Misc</span></div></div>
+<div class="c"><div class="n">Octagam 50mg/ml (IVIg)</div><div class="p">Discard unused portion</div><div class="m"><span class="t">Misc</span></div></div>
+<div class="c"><div class="n">IV fluid</div><div class="p">24 hours</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Nystatin</div><div class="p">28 days – protect from light</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Lidocaine vial 50ml</div><div class="p">28 days</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Norditropin 5/10/15mg (Somatropin) pen</div><div class="p">4 weeks in fridge / 3 weeks at room temp</div><div class="m"><span class="t">Misc</span>Fridge</div></div>
+<div class="c"><div class="n">Oseltamivir phosphate suspension 6mg/ml</div><div class="p">3 weeks or 10 days (two entries in guideline) – check label</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Oseltamivir suspension (FLUVIA)</div><div class="p">10 days</div><div class="m"><span class="t">Misc</span>Fridge</div></div>
+<div class="c"><div class="n">Dextrose 50% (50ml vial)</div><div class="p">Discard unused portion</div><div class="m"><span class="t">Misc</span></div></div>
+<div class="c"><div class="n">Sterile water for injection</div><div class="p">24 hours</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Sterile water for irrigation</div><div class="p">24 hours</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Teriparatide (Forteo)</div><div class="p">28 days (28 doses)</div><div class="m"><span class="t">Misc</span>Fridge</div></div>
+<div class="c"><div class="n">Trulicity 0.75mg pen</div><div class="p">14 days – protect from light</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Solu-Medrol (Methylprednisolone succinate) – reconstituted in water for injection</div><div class="p">6 hours room temp / 12 hours fridge</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Solu-Medrol – reconstituted with bacteriostatic water (benzyl alcohol)</div><div class="p">48 hours</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Depo-Medrol (Methylprednisolone acetate)</div><div class="p">Not multi-dose: use immediately, discard rest. NOT for IV</div><div class="m"><span class="t">Misc</span></div></div>
+<div class="c"><div class="n">Sevoflurane (Haluran) 250ml</div><div class="p">6 months from opening</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Sodium bicarbonate 8.4% vial (for oral use)</div><div class="p">30 days – protect from light</div><div class="m"><span class="t">Misc</span>Room temperature</div></div>
+<div class="c"><div class="n">Ipratropium (Atrovent) single-dose neb</div><div class="p">Use immediately, discard remainder</div><div class="m"><span class="t">Neb</span>Room temperature</div></div>
+<div class="c"><div class="n">Salbutamol (Ventolin) respiratory solution – multiple patients</div><div class="p">7 days</div><div class="m"><span class="t">Neb</span>Room temperature</div></div>
+<div class="c"><div class="n">Salbutamol (Ventolin / Bronchovent 5mg/5ml) – specific patient</div><div class="p">1 month after opening – protect from light</div><div class="m"><span class="t">Neb</span>Room temperature</div></div>
+<div class="c"><div class="n">Pulmicort (Budesonide) neb – opened envelope</div><div class="p">Within 3 months after opening envelope – protect from light</div><div class="m"><span class="t">Neb</span>Room temperature</div></div>
+<div class="c"><div class="n">Pulmicort (Budesonide) neb – opened single-dose unit</div><div class="p">Within 12 hours</div><div class="m"><span class="t">Neb</span>Room temperature</div></div>
+</div>
+<p class="w">⚠️ Discard immediately if not stored per the manufacturer's recommendations, or if there is discoloration or cloudiness. Room temperature: 18–25°C. Fridge: 2–8°C.<br>Source: AH-IDP-PHA-018 v04 (Jan 2026). If anything differs, follow the manufacturer's label and the pharmacy.</p>
+</main>
+<script>
+// name|category|stability (as in guideline)|calc code (n+d/w/m/h, 0=discard now)|storage R/F/B
+const D=`Topical ointments, creams, shampoos, solutions, sprays – multiple patients|Topical|7 days|7d|R
+Topical ointments, creams, shampoos, solutions, sprays – specific patient|Topical|28 days|28d|R
+Pancreatin (Creon) 150mg/cap|Oral|3 months after opening – keep tightly closed|3m|R
+Ophthalmic / otic / nasal drops – multiple patients (outpatient)|Drops|7 days|7d|R
+Ophthalmic / otic / nasal drops – specific patient|Drops|28 days|28d|R
+TABUNEX (Mometasone furoate) 50mcg nasal spray|Drops|Within 2 months of first use|2m|R
+Symbicort (Budesonide/Formoterol) – not for multiple patients|Inhaler|3 months after first opening|3m|R
+Spiriva (Tiotropium capsule) – not for multiple patients|Inhaler|9 days after opening blister strip|9d|R
+Other oral inhalers|Inhaler|6 months after opening|6m|R
+ANORO ELLIPTA (Umeclidinium/Vilanterol)|Inhaler|Within 6 weeks of first opening|6w|R
+RELVAR ELLIPTA (Fluticasone furoate/Vilanterol)|Inhaler|Max 1 month after removal of tray|1m|R
+BUFOMIX Easyhaler (Budesonide/Formoterol) 160/4.5|Inhaler|4 months after opening – original container|4m|R
+FOSTER NEXTHALER (Beclometasone/Formoterol) 100/6|Inhaler|2 months after opening – original container|2m|R
+TRELEGY ELLIPTA (Fluticasone/Umeclidinium/Vilanterol)|Inhaler|1 month after opening – original container|1m|R
+FLUTIFORM Evohaler (Fluticasone/Formoterol) 125/5 or 250/10|Inhaler|3 months after opening|3m|R
+Oral liquids that don't need reconstitution (incl. drops)|Oral liquid|28 days|28d|R
+Levetiracetam syrup 100mg/ml (Vales)|Oral liquid|Within 7 months after opening|7m|R
+Levetiracetam syrup 100mg/ml (Neuritam)|Oral liquid|Within 5 months after opening (confirmed by pharmacy)|5m|R
+Levetiracetam syrup 100mg/ml (Vitram)|Oral liquid|Within 5 months after opening (confirmed by pharmacy)|5m|R
+Ursofalk (Ursodeoxycholic acid) 250mg/5ml suspension|Oral liquid|Within 4 months after opening|4m|R
+LEVOZAL (Levocetirizine) 2.5mg/5ml syrup|Oral liquid|Within 3 months of opening|3m|R
+DOMPY (Domperidone) 1mg/ml suspension|Oral liquid|Within 3 months of opening|3m|R
+Onealpha (Alfacalcidol) 2mcg/ml drops|Oral liquid|28 days – protect from light|28d|F
+BABYLYTE (ORS)|Oral liquid|Within 48 hours after opening|48h|F
+FEROGLOBIN liquid|Oral liquid|Within 3 months once opened|3m|F
+TRILEPTAL (Oxcarbazepine) suspension|Oral liquid|Within 7 weeks after opening|7w|R
+Revotril (Clonazepam) drops 2.5mg/ml (10ml)|Oral liquid|120 days|120d|R
+Chloral hydrate syrup 500mg/5ml|Oral liquid|6 months|6m|R
+Phenobarbital elixir|Oral liquid|28 days|28d|R
+Clobazam (Tapclop) suspension|Oral liquid|28 days – room temp|28d|R
+Vitamin D3 (Cholecalciferol) D-Seul drops|Oral liquid|6 months|6m|R
+Azithromycin suspension|Antibiotic|5 days|5d|F
+Amoxicillin suspension|Antibiotic|14 days|14d|F
+Amoxicillin/Clavulanic acid suspension|Antibiotic|7 days|7d|F
+Cephalexin suspension|Antibiotic|14 days|14d|F
+Cefaclor suspension|Antibiotic|14 days|14d|F
+Cefadroxil suspension|Antibiotic|14 days in fridge / 7 days at room temp|14d|F
+Cefuroxime suspension|Antibiotic|10 days|10d|F
+Cefixime suspension|Antibiotic|14 days (room temp or fridge)|14d|B
+Lantus Solostar / Semglee / Vivaro (Insulin glargine 100)|Insulin|4 weeks – protect from light|4w|R
+Toujeo Solostar (Insulin glargine 300)|Insulin|6 weeks – protect from light|6w|R
+Basaglar (Insulin glargine 100)|Insulin|28 days – protect from light|28d|R
+Levemir (Insulin detemir)|Insulin|6 weeks|6w|R
+Tresiba FlexTouch / FlexPen / Vial (Insulin degludec)|Insulin|8 weeks – protect from light|8w|B
+Humalog Kwik-Pen / Mix25 / Mix50 (Insulin lispro)|Insulin|28 days – protect from light|28d|R
+Lyumjev Kwik-Pen (Insulin lispro)|Insulin|28 days|28d|R
+Humalog Mix 50/50 Kwik-Pen|Insulin|10 days – protect from light|10d|R
+Xultophy (Insulin degludec/Liraglutide)|Insulin|21 days – protect from light|21d|B
+Humulin R (Regular human insulin)|Insulin|28 days|28d|R
+Actrapid-HM (Regular human insulin)|Insulin|6 weeks – protect from light|6w|R
+Humulin N (NPH)|Insulin|28 days|28d|R
+Humulin 70/30|Insulin|28 days|28d|R
+Mixtard 70/30|Insulin|5 weeks|5w|R
+Novomix 30/70 and 50/50 Flex pen (Insulin aspart mix)|Insulin|4 weeks – protect from light|4w|R
+Novorapid Flex pen (Insulin aspart)|Insulin|4 weeks – protect from light|4w|B
+Truvelog Flex pen (Insulin aspart)|Insulin|28 days – protect from light|28d|R
+Soliqua 100/33 and 100/50 (Glargine/Lixisenatide)|Insulin|28 days – protect from light|28d|R
+Apidra Solostar (Insulin glulisine)|Insulin|28 days – protect from light|28d|R
+Ryzodeg 70/30|Insulin|4 weeks – protect from light|4w|B
+Single-dose vaccines (no preservatives)|Vaccine|Discard remaining portion|0d|-
+BCG vaccine|Vaccine|4 hours|4h|F
+OPV (oral polio vaccine)|Vaccine|28 days if WHO multi-dose vial policy conditions are met|28d|F
+Diphtheria-Tetanus (adult)|Vaccine|28 days if WHO multi-dose vial policy conditions are met|28d|F
+Hepatitis B vaccine|Vaccine|28 days if WHO multi-dose vial policy conditions are met|28d|F
+Multi-dose vaccines containing preservatives|Vaccine|As specified by manufacturer / WHO||F
+Measles vaccine (10-dose vial)|Vaccine|6 hours after opening|6h|F
+PPD test|Vaccine|30 days after opening|30d|F
+Botox after reconstitution|Misc|Within 24 hours|24h|F
+Extemporaneous preparations|Misc|Follow pharmacy label||-
+Human Albumin 20%|Misc|Discard unused portion|0d|-
+Octagam 50mg/ml (IVIg)|Misc|Discard unused portion|0d|-
+IV fluid|Misc|24 hours|24h|R
+Nystatin|Misc|28 days – protect from light|28d|R
+Lidocaine vial 50ml|Misc|28 days|28d|R
+Norditropin 5/10/15mg (Somatropin) pen|Misc|4 weeks in fridge / 3 weeks at room temp|4w|F
+Oseltamivir phosphate suspension 6mg/ml|Misc|3 weeks or 10 days (two entries in guideline) – check label||R
+Oseltamivir suspension (FLUVIA)|Misc|10 days|10d|F
+Dextrose 50% (50ml vial)|Misc|Discard unused portion|0d|-
+Sterile water for injection|Misc|24 hours|24h|R
+Sterile water for irrigation|Misc|24 hours|24h|R
+Teriparatide (Forteo)|Misc|28 days (28 doses)|28d|F
+Trulicity 0.75mg pen|Misc|14 days – protect from light|14d|R
+Solu-Medrol (Methylprednisolone succinate) – reconstituted in water for injection|Misc|6 hours room temp / 12 hours fridge|6h|R
+Solu-Medrol – reconstituted with bacteriostatic water (benzyl alcohol)|Misc|48 hours|48h|R
+Depo-Medrol (Methylprednisolone acetate)|Misc|Not multi-dose: use immediately, discard rest. NOT for IV|0d|-
+Sevoflurane (Haluran) 250ml|Misc|6 months from opening|6m|R
+Sodium bicarbonate 8.4% vial (for oral use)|Misc|30 days – protect from light|30d|R
+Ipratropium (Atrovent) single-dose neb|Neb|Use immediately, discard remainder|0d|R
+Salbutamol (Ventolin) respiratory solution – multiple patients|Neb|7 days|7d|R
+Salbutamol (Ventolin / Bronchovent 5mg/5ml) – specific patient|Neb|1 month after opening – protect from light|1m|R
+Pulmicort (Budesonide) neb – opened envelope|Neb|Within 3 months after opening envelope – protect from light|3m|R
+Pulmicort (Budesonide) neb – opened single-dose unit|Neb|Within 12 hours|12h|R`.split("\n").map(l=>{const a=l.split("|");return{n:a[0],c:a[1],t:a[2],k:a[3],s:a[4]}});
+const SN={R:"Room temperature",F:"Fridge",B:"Room temp or fridge","-":""};
+document.getElementById("nojs").remove();
+const q=document.getElementById("q"),cat=document.getElementById("cat"),out=document.getElementById("out");
+[...new Set(D.map(x=>x.c))].forEach(c=>cat.add(new Option(c,c)));
+function calc(k,from){const m=/^(\d+)([dwmh])$/.exec(k);if(!m)return null;const n=+m[1],d=new Date(from);
+if(m[2]==="h")d.setHours(d.getHours()+n);else if(m[2]==="m")d.setMonth(d.getMonth()+n);else d.setDate(d.getDate()+n*(m[2]==="w"?7:1));return d}
+function fmt(d,h){return d.toLocaleString("en-GB",h?{dateStyle:"medium",timeStyle:"short"}:{dateStyle:"full"})}
+function render(){const s=q.value.trim().toLowerCase();
+const r=D.filter(x=>(!cat.value||x.c===cat.value)&&(!s||(x.n+" "+x.c).toLowerCase().includes(s)));
+out.innerHTML=r.length?"":'<p class="m">No results.</p>';
+r.forEach(x=>{const e=document.createElement("div");e.className="c";
+e.innerHTML=`<div class="n"></div><div class="p"></div><div class="m"><span class="t"></span><span class="st"></span></div>`;
+e.querySelector(".n").textContent=x.n;e.querySelector(".p").textContent=x.t;
+e.querySelector(".t").textContent=x.c;e.querySelector(".st").textContent=SN[x.s]||"";
+e.onclick=()=>{if(e.querySelector(".r")){e.querySelector(".r").remove();return}
+if(!x.k)return;const b=document.createElement("div");b.className="r";const hr=/h$/.test(x.k)||x.k==="0d";
+const now=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16);
+b.innerHTML=`<label>Opened on (date & time)</label><input type="datetime-local" value="${now}"><div class="res"></div>`;
+const i=b.querySelector("input"),o=b.querySelector(".res");
+const u=()=>{if(x.k==="0d"){o.innerHTML="<b>Discard right after use</b>";return}const d=calc(x.k,i.value);o.innerHTML=d?`Discard after: <b>${fmt(d,hr)}</b>`:""};
+i.oninput=u;i.onclick=ev=>ev.stopPropagation();b.onclick=ev=>ev.stopPropagation();u();e.appendChild(b)};
+out.appendChild(e)})}
+q.oninput=render;cat.onchange=render;render();
+</script>
+</body>
+</html>
