@@ -233,7 +233,6 @@ Salbutamol (Ventolin / Bronchovent 5mg/5ml) – specific patient|Neb|1 month aft
 Pulmicort (Budesonide) neb – opened envelope|Neb|Within 3 months after opening envelope – protect from light|3m|R
 Pulmicort (Budesonide) neb – opened single-dose unit|Neb|Within 12 hours|12h|R`.split("\n").map(l=>{const a=l.split("|");return{n:a[0],c:a[1],t:a[2],k:a[3],s:a[4]}});
 const SN={R:"Room temperature",F:"Fridge",B:"Room temp or fridge","-":""};
-document.getElementById("nojs").remove();
 const q=document.getElementById("q"),cat=document.getElementById("cat"),out=document.getElementById("out");
 [...new Set(D.map(x=>x.c))].forEach(c=>cat.add(new Option(c,c)));
 function calc(k,from){const m=/^(\d+)([dwmh])$/.exec(k);if(!m)return null;const n=+m[1],d=new Date(from);
