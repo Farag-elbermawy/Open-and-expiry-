@@ -255,15 +255,16 @@ const u=()=>{if(x.k==="0d"){o.innerHTML="<b>Discard right after use</b>";return}
 i.oninput=u;i.onclick=ev=>ev.stopPropagation();b.onclick=ev=>ev.stopPropagation();u();e.appendChild(b)};
 out.appendChild(e)})}
 q.oninput=render;cat.onchange=render;
-  // --- كود عداد الزيارات الجديد ---
+// --- عداد الزيارات لجميع المستخدمين ---
 fetch('https://api.counterapi.dev/v1/farag-elbermawy/expiry-visits/up')
   .then(response => response.json())
   .then(data => {
     const footer = document.querySelector('.w');
+    // التأكد من وجود العنصر ومن وجود قيمة العداد
     if (footer && data && data.count !== undefined) {
       const counter = document.createElement('div');
       counter.style.cssText = "text-align:center; font-size:12px; color:var(--mut); margin-top:10px; opacity:0.7;";
-      counter.innerHTML = `👁️ عدد الزيارات: <b>${data.count}</b>`;
+      counter.innerHTML = `👁️ إجمالي الزيارات: <b>${data.count}</b>`;
       footer.after(counter);
     }
   })
